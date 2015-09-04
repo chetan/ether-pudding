@@ -123,6 +123,7 @@ factory = (Promise, web3) ->
       promisify = (instance) ->
         # Promisify .call() and .sendTransaction() for functions.
         for key, fn of instance
+          continue if key == "allEvents"
           continue if typeof fn != "object" and typeof fn != "function"
 
           for k, v of fn
